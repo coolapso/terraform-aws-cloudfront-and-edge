@@ -13,13 +13,16 @@ for example: `https://foo.bar/somepage/`
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.0.0 |
 
 ## Modules
 
@@ -55,7 +58,7 @@ No modules.
 | <a name="input_max_ttl"></a> [max\_ttl](#input\_max\_ttl) | Max cache ttl | `number` | `3600` | no |
 | <a name="input_min_ttl"></a> [min\_ttl](#input\_min\_ttl) | Min cache ttl | `number` | `0` | no |
 | <a name="input_s3_bucket_id"></a> [s3\_bucket\_id](#input\_s3\_bucket\_id) | Name of s3 bucket | `string` | n/a | yes |
-| <a name="input_s3_objects"></a> [s3\_objects](#input\_s3\_objects) | The s3 onjects to allow access to ARN/objects | `list` | n/a | yes |
+| <a name="input_s3_objects"></a> [s3\_objects](#input\_s3\_objects) | The s3 onjects to allow access to ARN/objects | `list(any)` | n/a | yes |
 | <a name="input_s3_origin_id"></a> [s3\_origin\_id](#input\_s3\_origin\_id) | unique origin id | `string` | `"s3Website"` | no |
 | <a name="input_s3_origin_path"></a> [s3\_origin\_path](#input\_s3\_origin\_path) | objects origin path if using subfolders | `string` | `null` | no |
 | <a name="input_s3_regional_domain_name"></a> [s3\_regional\_domain\_name](#input\_s3\_regional\_domain\_name) | The regional domain name of the bucket | `string` | n/a | yes |
