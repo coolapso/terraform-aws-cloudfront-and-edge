@@ -1,0 +1,21 @@
+name: Release
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  tests:
+    users: 4s3ti/terraform-aws-cloudfront-and-edge/.github/workflows/tests.yaml@main
+
+  release:
+    needs: tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: go-semantic-release/action@v1
+        id: semrel
+        name: Release
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+

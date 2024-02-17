@@ -1,0 +1,6 @@
+.terraform/
+.terragrunt/
+.terraform-cache/
+.terragrunt-cache/
+.tofu/
+.tofu-cache/
