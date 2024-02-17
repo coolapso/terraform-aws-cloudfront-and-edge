@@ -5,7 +5,7 @@ on:
 
 jobs:
   tests:
-    users: 4s3ti/terraform-aws-cloudfront-and-edge/.github/workflows/tests.yaml@main
+    uses: 4s3ti/terraform-aws-cloudfront-and-edge/.github/workflows/tests.yml@main
 
   release:
     needs: tests
