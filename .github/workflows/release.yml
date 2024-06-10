@@ -5,7 +5,7 @@ on:
 
 jobs:
   tests:
-    uses: 4s3ti/terraform-aws-cloudfront-and-edge/.github/workflows/tests.yml@main
+    uses: coolapso/terraform-aws-cloudfront-and-edge/.github/workflows/tests.yml@main
 
   release:
     needs: tests
