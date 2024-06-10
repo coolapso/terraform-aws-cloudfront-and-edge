@@ -115,6 +115,7 @@ variable "custom_error_responses" {
     response_code         = optional(number)
     response_page_path    = optional(string)
   }))
+  default = null
 }
 
 variable "acm_certificate_arn" {
