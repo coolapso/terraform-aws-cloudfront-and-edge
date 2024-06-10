@@ -47,6 +47,7 @@ No modules.
 | <a name="input_cloudfront_origin_description"></a> [cloudfront\_origin\_description](#input\_cloudfront\_origin\_description) | Description for the origin | `string` | n/a | yes |
 | <a name="input_cloudfront_origin_name"></a> [cloudfront\_origin\_name](#input\_cloudfront\_origin\_name) | The name of the cloudfront origin | `string` | n/a | yes |
 | <a name="input_cookies_forward"></a> [cookies\_forward](#input\_cookies\_forward) | cookies forwarding | `string` | `"none"` | no |
+| <a name="input_custom_error_responses"></a> [custom\_error\_responses](#input\_custom\_error\_responses) | Custom error response definitions | <pre>list(object({<br>    error_caching_min_ttl = optional(number)<br>    error_code            = optional(number)<br>    response_code         = optional(number)<br>    response_page_path    = optional(string)<br>  }))</pre> | n/a | yes |
 | <a name="input_default_root_object"></a> [default\_root\_object](#input\_default\_root\_object) | The default website root object | `string` | `null` | no |
 | <a name="input_default_ttl"></a> [default\_ttl](#input\_default\_ttl) | Default cache ttl | `number` | `1800` | no |
 | <a name="input_enable_distribution"></a> [enable\_distribution](#input\_enable\_distribution) | Enables the cf distributuion | `bool` | `true` | no |

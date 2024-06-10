@@ -107,6 +107,16 @@ variable "max_ttl" {
   default     = 3600
 }
 
+variable "custom_error_responses" {
+  description = "Custom error response definitions"
+  type = list(object({
+    error_caching_min_ttl = optional(number)
+    error_code            = optional(number)
+    response_code         = optional(number)
+    response_page_path    = optional(string)
+  }))
+}
+
 variable "acm_certificate_arn" {
   description = "ACM Certificate ARN, must be us-east-1"
   type        = string

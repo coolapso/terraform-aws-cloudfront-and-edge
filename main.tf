@@ -76,6 +76,17 @@ resource "aws_cloudfront_distribution" "this" {
     max_ttl                = var.max_ttl
   }
 
+  dynamic "custom_error_response" {
+    for_each = var.custom_error_responses
+
+    content {
+      error_caching_min_ttl = var.custom_error_responses[custom_error_response.key].error_caching_min_ttl
+      error_code            = var.custom_error_responses[custom_error_response.key].error_code
+      response_code         = var.custom_error_responses[custom_error_response.key].response_code
+      response_page_path    = var.custom_error_responses[custom_error_response.key].response_page_path
+    }
+  }
+
 
   restrictions {
     geo_restriction {
