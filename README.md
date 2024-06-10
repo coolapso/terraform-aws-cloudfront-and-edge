@@ -1,10 +1,15 @@
-# Terraform AWS Cloudfront fpr s3 
+# Terraform AWS Cloudfront for s3 
 
 Fully written and tested using [OpenTofu](https://github.com/opentofu/opentofu)
 
 Simple AWS Cloudfront to serve static websites from S3.
-This module provides lambda@edge function if you want to serve content in subfolders without needing to provide the index.html, 
+
+## Key features
+
+* lambda@edge function if you want to serve content in subfolders without needing to provide the index.html, 
 for example: `https://foo.bar/somepage/`
+* Custom error reponses
+
 
 ## TODO:
 
