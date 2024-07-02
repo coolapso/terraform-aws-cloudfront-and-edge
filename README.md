@@ -70,6 +70,7 @@ No modules.
 | <a name="input_s3_origin_id"></a> [s3\_origin\_id](#input\_s3\_origin\_id) | unique origin id | `string` | `"s3Website"` | no |
 | <a name="input_s3_origin_path"></a> [s3\_origin\_path](#input\_s3\_origin\_path) | objects origin path if using subfolders | `string` | `null` | no |
 | <a name="input_s3_regional_domain_name"></a> [s3\_regional\_domain\_name](#input\_s3\_regional\_domain\_name) | The regional domain name of the bucket | `string` | n/a | yes |
+| <a name="input_set_forwarded_values"></a> [set\_forwarded\_values](#input\_set\_forwarded\_values) | enables / disables cache behavior forwarded values | `bool` | `true` | no |
 | <a name="input_ssl_support_method"></a> [ssl\_support\_method](#input\_ssl\_support\_method) | SSL support method to be used | `string` | `"sni-only"` | no |
 | <a name="input_tls_minimum_protocol_version"></a> [tls\_minimum\_protocol\_version](#input\_tls\_minimum\_protocol\_version) | Minimum TLS version | `string` | `"TLSv1.2_2021"` | no |
 | <a name="input_viewer_protocol_policy"></a> [viewer\_protocol\_policy](#input\_viewer\_protocol\_policy) | specify the protocol that users can use to access the files in the origin | `string` | `"redirect-to-https"` | no |

@@ -71,6 +71,12 @@ variable "price_class" {
   default     = "PriceClass_All"
 }
 
+variable "set_forwarded_values" {
+  description = "enables / disables cache behavior forwarded values"
+  type        = bool
+  default     = true
+}
+
 variable "forward_query_strings" {
   description = "Enables/disables query string forwarding"
   type        = bool
