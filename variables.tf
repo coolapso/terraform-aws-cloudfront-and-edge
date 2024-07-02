@@ -41,6 +41,12 @@ variable "s3_origin_id" {
   default     = "s3Website"
 }
 
+variable "origin_access_identity" {
+  description = "CloudFront S3 origin configuration information"
+  type        = string
+  default     = null
+}
+
 variable "s3_origin_path" {
   description = "objects origin path if using subfolders"
   type        = string

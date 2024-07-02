@@ -45,6 +45,14 @@ resource "aws_cloudfront_distribution" "this" {
     origin_path              = var.s3_origin_path
     origin_access_control_id = var.enable_cloudfront_origin_access_control ? aws_cloudfront_origin_access_control.this[0].id : null
     origin_id                = var.s3_origin_id
+
+    dynamic "s3_origin_config" {
+      for_each = var.origin_access_identity != null ? { "key" = 1 } : {}
+
+      content {
+        origin_access_identity = var.origin_access_identity
+      }
+    }
   }
 
   enabled             = var.enable_distribution
