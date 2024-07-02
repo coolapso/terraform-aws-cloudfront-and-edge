@@ -64,6 +64,7 @@ No modules.
 | <a name="input_geo_restriction_type"></a> [geo\_restriction\_type](#input\_geo\_restriction\_type) | whitelist/blacklist | `string` | `"none"` | no |
 | <a name="input_max_ttl"></a> [max\_ttl](#input\_max\_ttl) | Max cache ttl | `number` | `3600` | no |
 | <a name="input_min_ttl"></a> [min\_ttl](#input\_min\_ttl) | Min cache ttl | `number` | `0` | no |
+| <a name="input_price_class"></a> [price\_class](#input\_price\_class) | Price class for this distribution | `string` | `"PriceClass_All"` | no |
 | <a name="input_s3_bucket_id"></a> [s3\_bucket\_id](#input\_s3\_bucket\_id) | Name of s3 bucket | `string` | n/a | yes |
 | <a name="input_s3_objects"></a> [s3\_objects](#input\_s3\_objects) | The s3 onjects to allow access to ARN/objects | `list(any)` | n/a | yes |
 | <a name="input_s3_origin_id"></a> [s3\_origin\_id](#input\_s3\_origin\_id) | unique origin id | `string` | `"s3Website"` | no |

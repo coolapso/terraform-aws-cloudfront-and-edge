@@ -49,6 +49,7 @@ resource "aws_cloudfront_distribution" "this" {
   is_ipv6_enabled     = var.enable_ipv6
   default_root_object = var.default_root_object
   aliases             = var.aliases
+  price_class         = var.price_class
 
 
   default_cache_behavior {

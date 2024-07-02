@@ -65,6 +65,12 @@ variable "aliases" {
   default     = null
 }
 
+variable "price_class" {
+  description = "Price class for this distribution"
+  type        = string
+  default     = "PriceClass_All"
+}
+
 variable "forward_query_strings" {
   description = "Enables/disables query string forwarding"
   type        = bool
