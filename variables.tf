@@ -71,6 +71,18 @@ variable "price_class" {
   default     = "PriceClass_All"
 }
 
+variable "allowed_methods" {
+  description = "default cache behavior allowed methods"
+  type        = list(string)
+  default     = ["GET", "HEAD"]
+}
+
+variable "cached_methods" {
+  description = "default cache behavior cached methods"
+  type        = list(string)
+  default     = ["GET", "HEAD"]
+}
+
 variable "set_forwarded_values" {
   description = "enables / disables cache behavior forwarded values"
   type        = bool
