@@ -101,6 +101,15 @@ variable "cookies_forward" {
   default     = "none"
 }
 
+variable "custom_edge_function_associations" {
+  description = "Edge functions to associate with the distribution"
+  type = map(object({
+    event_type   = string
+    function_arn = string
+  }))
+  default = {}
+}
+
 variable "viewer_protocol_policy" {
   description = "specify the protocol that users can use to access the files in the origin"
   type        = string
@@ -168,5 +177,5 @@ variable "tls_minimum_protocol_version" {
 variable "enable_noindex_function" {
   description = "Enables lambda@edge function to serve files inside subfolders"
   type        = bool
-  default     = false
+  default     = true
 }

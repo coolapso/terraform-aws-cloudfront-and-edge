@@ -70,11 +70,20 @@ resource "aws_cloudfront_distribution" "this" {
     }
 
     dynamic "function_association" {
-      for_each = aws_cloudfront_function.this
+      for_each = var.enable_noindex_function ? { "key" = 1 } : {}
 
       content {
         event_type   = "viewer-request"
         function_arn = aws_cloudfront_function.this[0].arn
+      }
+    }
+
+    dynamic "function_association" {
+      for_each = var.custom_edge_function_associations
+
+      content {
+        event_type   = function_association.value.event_type
+        function_arn = function_association.value.function_arn
       }
     }
 
@@ -108,10 +117,13 @@ resource "aws_cloudfront_distribution" "this" {
     ssl_support_method       = var.ssl_support_method
     minimum_protocol_version = var.tls_minimum_protocol_version
   }
+
+  # depends_on = [ aws_cloudfront_function.this[0] ] 
 }
 
 resource "aws_cloudfront_function" "this" {
-  count   = var.enable_noindex_function ? 1 : 0
+  count = var.enable_noindex_function ? 1 : 0
+
   name    = "noindexhtml"
   runtime = "cloudfront-js-2.0"
   comment = "Serves files under subdirectories without index.html"
