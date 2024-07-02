@@ -1,3 +1,7 @@
+locals {
+  cache_policy = var.custom_cache_policy ? aws_cloudfront_cache_policy.this[0].id : data.aws_cloudfront_cache_policy.managed[0].id
+}
+
 variable "attach_s3_bucket_policy" {
   description = "attach a policy to s3 bucket to allow this distribution"
   type        = bool
@@ -95,20 +99,44 @@ variable "cached_methods" {
   default     = ["GET", "HEAD"]
 }
 
-variable "set_forwarded_values" {
-  description = "enables / disables cache behavior forwarded values"
-  type        = bool
-  default     = true
+variable "cache_policy_name" {
+  description = "The cache policy name"
+  type        = string
+  default     = null
 }
 
-variable "forward_query_strings" {
-  description = "Enables/disables query string forwarding"
+variable "custom_cache_policy" {
+  description = "If going to create a custom cache policy"
   type        = bool
   default     = false
 }
 
-variable "cookies_forward" {
-  description = "cookies forwarding"
+variable "managed_cache_policy_name" {
+  description = "The default cache policy name"
+  type        = string
+  default     = null
+}
+
+variable "cache_policy_comment" {
+  description = "Cache policy Comment/description"
+  type        = string
+  default     = null
+}
+
+variable "cookies_forwarding_behavior" {
+  description = "Whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin."
+  type        = string
+  default     = "none"
+}
+
+variable "headers_forwarding_behavior" {
+  description = "Whether any HTTP headers are included in the cache key and automatically included in requests that CloudFront sends to the origin"
+  type        = string
+  default     = "none"
+}
+
+variable "query_string_forwarding_behavior" {
+  description = "Whether URL query strings in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin"
   type        = string
   default     = "none"
 }

@@ -39,6 +39,37 @@ resource "aws_cloudfront_origin_access_control" "this" {
   signing_protocol                  = "sigv4"
 }
 
+data "aws_cloudfront_cache_policy" "managed" {
+  count = var.managed_cache_policy_name == null && var.custom_cache_policy != true ? 0 : 1
+
+  name = var.managed_cache_policy_name
+}
+
+resource "aws_cloudfront_cache_policy" "this" {
+  count = var.custom_cache_policy == true && var.managed_cache_policy_name == null ? 1 : 0
+
+  name        = var.cache_policy_name
+  comment     = var.cache_policy_comment
+  default_ttl = var.default_ttl
+  max_ttl     = var.max_ttl
+  min_ttl     = var.min_ttl
+
+  parameters_in_cache_key_and_forwarded_to_origin {
+    cookies_config {
+      cookie_behavior = var.cookies_forwarding_behavior
+    }
+
+    headers_config {
+      header_behavior = var.headers_forwarding_behavior
+    }
+
+
+    query_strings_config {
+      query_string_behavior = var.query_string_forwarding_behavior
+    }
+  }
+}
+
 resource "aws_cloudfront_distribution" "this" {
   origin {
     domain_name              = var.s3_regional_domain_name
@@ -66,18 +97,7 @@ resource "aws_cloudfront_distribution" "this" {
     allowed_methods  = var.allowed_methods
     cached_methods   = var.cached_methods
     target_origin_id = var.s3_origin_id
-
-    dynamic "forwarded_values" {
-      for_each = var.set_forwarded_values ? { "key" = 1 } : {}
-
-      content {
-        query_string = var.forward_query_strings
-
-        cookies {
-          forward = var.cookies_forward
-        }
-      }
-    }
+    cache_policy_id  = local.cache_policy
 
     dynamic "function_association" {
       for_each = var.enable_noindex_function ? { "key" = 1 } : {}
