@@ -14,6 +14,12 @@ variable "s3_objects" {
   type        = list(any)
 }
 
+variable "enable_cloudfront_origin_access_control" {
+  description = "enable/disable cloudfront origin access control"
+  type        = bool
+  default     = true
+}
+
 variable "cloudfront_origin_name" {
   description = "The name of the cloudfront origin"
   type        = string

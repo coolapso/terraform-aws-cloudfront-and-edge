@@ -30,6 +30,8 @@ data "aws_iam_policy_document" "allow_cloudfront" {
 }
 
 resource "aws_cloudfront_origin_access_control" "this" {
+  count = var.enable_cloudfront_origin_access_control ? 1 : 0
+
   name                              = var.cloudfront_origin_name
   description                       = var.cloudfront_origin_description
   origin_access_control_origin_type = "s3"
@@ -41,7 +43,7 @@ resource "aws_cloudfront_distribution" "this" {
   origin {
     domain_name              = var.s3_regional_domain_name
     origin_path              = var.s3_origin_path
-    origin_access_control_id = aws_cloudfront_origin_access_control.this.id
+    origin_access_control_id = var.enable_cloudfront_origin_access_control ? aws_cloudfront_origin_access_control.this[0].id : null
     origin_id                = var.s3_origin_id
   }
 

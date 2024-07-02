@@ -59,6 +59,7 @@ No modules.
 | <a name="input_custom_error_responses"></a> [custom\_error\_responses](#input\_custom\_error\_responses) | Custom error response definitions | <pre>list(object({<br>    error_caching_min_ttl = optional(number)<br>    error_code            = optional(number)<br>    response_code         = optional(number)<br>    response_page_path    = optional(string)<br>  }))</pre> | `null` | no |
 | <a name="input_default_root_object"></a> [default\_root\_object](#input\_default\_root\_object) | The default website root object | `string` | `null` | no |
 | <a name="input_default_ttl"></a> [default\_ttl](#input\_default\_ttl) | Default cache ttl | `number` | `1800` | no |
+| <a name="input_enable_cloudfront_origin_access_control"></a> [enable\_cloudfront\_origin\_access\_control](#input\_enable\_cloudfront\_origin\_access\_control) | enable/disable cloudfront origin access control | `bool` | `true` | no |
 | <a name="input_enable_distribution"></a> [enable\_distribution](#input\_enable\_distribution) | Enables the cf distributuion | `bool` | `true` | no |
 | <a name="input_enable_ipv6"></a> [enable\_ipv6](#input\_enable\_ipv6) | Enables ipv6 for the cloudfront distributuion | `bool` | `true` | no |
 | <a name="input_enable_noindex_function"></a> [enable\_noindex\_function](#input\_enable\_noindex\_function) | Enables lambda@edge function to serve files inside subfolders | `bool` | `true` | no |
