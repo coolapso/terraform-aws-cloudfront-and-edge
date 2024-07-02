@@ -49,6 +49,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_acm_certificate_arn"></a> [acm\_certificate\_arn](#input\_acm\_certificate\_arn) | ACM Certificate ARN, must be us-east-1 | `string` | n/a | yes |
 | <a name="input_aliases"></a> [aliases](#input\_aliases) | Alternate domain names | `list(string)` | `null` | no |
+| <a name="input_attach_s3_bucket_policy"></a> [attach\_s3\_bucket\_policy](#input\_attach\_s3\_bucket\_policy) | attach a policy to s3 bucket to allow this distribution | `bool` | `true` | no |
 | <a name="input_cloudfront_origin_description"></a> [cloudfront\_origin\_description](#input\_cloudfront\_origin\_description) | Description for the origin | `string` | n/a | yes |
 | <a name="input_cloudfront_origin_name"></a> [cloudfront\_origin\_name](#input\_cloudfront\_origin\_name) | The name of the cloudfront origin | `string` | n/a | yes |
 | <a name="input_cookies_forward"></a> [cookies\_forward](#input\_cookies\_forward) | cookies forwarding | `string` | `"none"` | no |

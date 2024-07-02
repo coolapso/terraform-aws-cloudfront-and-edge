@@ -1,10 +1,13 @@
 resource "aws_s3_bucket_policy" "allow_cloudfront" {
-  bucket = var.s3_bucket_id
-  policy = data.aws_iam_policy_document.allow_cloudfront.json
+  count = var.attach_s3_bucket_policy ? 1 : 0
 
+  bucket = var.s3_bucket_id
+  policy = data.aws_iam_policy_document.allow_cloudfront[0].json
 }
 
 data "aws_iam_policy_document" "allow_cloudfront" {
+  count = var.attach_s3_bucket_policy ? 1 : 0
+
   statement {
     principals {
       type        = "Service"

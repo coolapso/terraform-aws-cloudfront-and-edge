@@ -1,3 +1,9 @@
+variable "attach_s3_bucket_policy" {
+  description = "attach a policy to s3 bucket to allow this distribution"
+  type        = bool
+  default     = true
+}
+
 variable "s3_bucket_id" {
   description = "Name of s3 bucket"
   type        = string
